@@ -37,7 +37,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/nuri-system-frontend:latest
           build-args: |
-            REACT_APP_API_URL=https://nuribox.co.kr/api
+            REACT_APP_API_URL=https://nuribox.cafe24.com/api
           cache-from: type=gha,scope=frontend
           cache-to: type=gha,mode=max,scope=frontend
 
