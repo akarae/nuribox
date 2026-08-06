@@ -8,3 +8,5 @@ export const confirmSettlement = (data) =>
   fetchWithAuth(`${API_URL}/settlements/confirm`, { method: "POST", body: JSON.stringify(data) }).then(handleResponse);
 export const markPaid = (settlementId) =>
   fetchWithAuth(`${API_URL}/settlements/${settlementId}/paid`, { method: "PATCH" }).then(handleResponse);
+export const previewOrderCount = (companyId, year, month) =>
+  fetchWithAuth(`${API_URL}/settlements/preview?companyId=${companyId}&year=${year}&month=${month}`).then(handleResponse);
