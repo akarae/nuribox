@@ -1,8 +1,0 @@
-services:
-  backend:
-    volumes: []
-    command: node server.js
-
-  frontend:
-    volumes: []
-    command: sh -c "npm run build && npx serve -s build -l 3000"
