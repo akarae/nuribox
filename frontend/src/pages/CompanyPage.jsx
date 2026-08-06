@@ -178,41 +178,58 @@ const copyUrl = (companyCode) => {
           <div className="modal modal-large">
             <h2>{editingId ? "업체 수정" : "업체 등록"}</h2>
             <div className="form-grid">
-              <input name="company_name" placeholder="업체명" value={form.company_name} onChange={handleChange} />
-              <select name="business_type" value={form.business_type} onChange={handleChange}>
-                <option value="">업종 선택</option>
-                {businessTypes.map((code) => (
-                  <option key={code.code_id} value={code.code_value}>
-                    {code.code_name}
-                  </option>
-                ))}
-              </select>
-              <input name="manager_name" placeholder="담당자" value={form.manager_name} onChange={handleChange} />
-              <input name="phone" placeholder="전화번호" value={form.phone} onChange={handleChange} />
-              <input
-                name="payment_day"
-                type="number"
-                min="1"
-                max="31"
-                placeholder="결제일"
-                value={form.payment_day}
-                onChange={handleChange}
-              />
-              <select name="status" value={form.status} onChange={handleChange}>
-                {statusTypes.map((code) => (
-                  <option key={code.code_id} value={code.code_value}>
-                    {code.code_name}
-                  </option>
-                ))}
-              </select>
-              <input name="address" placeholder="주소" value={form.address} onChange={handleChange} style={{ gridColumn: "1 / -1" }} />
-              <textarea
-                name="note"
-                placeholder="비고"
-                value={form.note}
-                onChange={handleChange}
-                style={{ gridColumn: "1 / -1" }}
-              />
+              <div className="field-group">
+                <label className="field-badge">업체명</label>
+                <input name="company_name" value={form.company_name} onChange={handleChange} />
+              </div>
+              <div className="field-group">
+                <label className="field-badge">업종</label>
+                <select name="business_type" value={form.business_type} onChange={handleChange}>
+                  <option value="">선택</option>
+                  {businessTypes.map((code) => (
+                    <option key={code.code_id} value={code.code_value}>
+                      {code.code_name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="field-group">
+                <label className="field-badge">담당자</label>
+                <input name="manager_name" value={form.manager_name} onChange={handleChange} />
+              </div>
+              <div className="field-group">
+                <label className="field-badge">전화번호</label>
+                <input name="phone" value={form.phone} onChange={handleChange} />
+              </div>
+              <div className="field-group">
+                <label className="field-badge">결제일</label>
+                <input
+                  name="payment_day"
+                  type="number"
+                  min="1"
+                  max="31"
+                  value={form.payment_day}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="field-group">
+                <label className="field-badge">거래상태</label>
+                <select name="status" value={form.status} onChange={handleChange}>
+                  {statusTypes.map((code) => (
+                    <option key={code.code_id} value={code.code_value}>
+                      {code.code_name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="field-group full-width">
+                <label className="field-badge">주소</label>
+                <input name="address" value={form.address} onChange={handleChange} />
+              </div>
+              <div className="field-group full-width">
+                <label className="field-badge">비고</label>
+                <textarea name="note" value={form.note} onChange={handleChange} />
+              </div>
             </div>
             <div className="form-actions">
               <button className="btn-primary" onClick={handleSubmit}>{editingId ? "수정 저장" : "등록"}</button>
