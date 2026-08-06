@@ -64,6 +64,10 @@ jobs:
               echo "❌ nginx.conf 다운로드 실패!"
               exit 1
             fi
+            curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+                 -H "Accept: application/vnd.github.v3.raw" \
+                 -o /home/nuribox/script.sql \
+                 https://api.github.com/repos/akarae/nuribox/contents/script.sql
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/nuri-system-backend:latest
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/nuri-system-frontend:latest
             cd /home/nuribox
