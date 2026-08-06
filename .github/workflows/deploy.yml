@@ -1,0 +1,72 @@
+name: Deploy Nuri System
+
+on:
+  push:
+    branches: [ main ]   # 수시 push 대신, 배포일(예: 매주 금요일)에 모아서 push하는 운영 방식
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 코드 체크아웃
+        uses: actions/checkout@v3
+
+      - name: Docker Hub 로그인
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: 백엔드 이미지 빌드
+        uses: docker/build-push-action@v4
+        with:
+          context: ./backend
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/nuri-system-backend:latest
+
+      - name: 프론트엔드 이미지 빌드
+        uses: docker/build-push-action@v4
+        with:
+          context: ./frontend
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/nuri-system-frontend:latest
+
+      - name: 카페24 서버 배포
+        uses: appleboy/ssh-action@master
+        with:
+          host    : ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key     : ${{ secrets.SERVER_SSH_KEY }}
+          port    : 22
+          script  : |
+            echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+
+            mkdir -p /home/nuri_system
+            mkdir -p /home/nuri_system/nginx
+
+            curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+                 -H "Accept: application/vnd.github.v3.raw" \
+                 -o /home/nuri_system/docker-compose.yml \
+                 https://api.github.com/repos/akarae/nuri_system/contents/docker-compose.yml
+
+            curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+                 -H "Accept: application/vnd.github.v3.raw" \
+                 -o /home/nuri_system/nginx/nginx.conf \
+                 https://api.github.com/repos/akarae/nuri_system/contents/nginx/nginx.conf
+
+            if [ ! -s /home/nuri_system/nginx/nginx.conf ]; then
+              echo "nginx.conf 다운로드 실패!"
+              exit 1
+            fi
+
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/nuri-system-backend:latest
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/nuri-system-frontend:latest
+
+            cd /home/nuri_system
+            docker compose down
+            docker compose up -d
+
+            docker image prune -f
+
+            echo "배포 완료!"

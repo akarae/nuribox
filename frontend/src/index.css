@@ -1,0 +1,576 @@
+:root {
+  --nuri-green: #639922;
+  --nuri-green-dark: #27500A;
+  --nuri-green-bg: #EAF3DE;
+  --nuri-border: #E0E0E0;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+  color: #222;
+  background: #fff;
+}
+
+.layout-header {
+  padding: 1rem 1.5rem;
+  border-bottom: 2px solid var(--nuri-green);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.layout-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.layout-header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--nuri-green-dark);
+  white-space: nowrap;
+}
+
+.layout-nav-inline {
+  margin-left: 16px;
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.layout-nav-inline a {
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #555;
+}
+
+.layout-nav-inline a:hover {
+  background: var(--nuri-green-bg);
+  color: var(--nuri-green-dark);
+}
+
+.layout-main {
+  padding: 1.25rem 1.5rem;
+}
+
+/* ===== 표 ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+thead tr {
+  background: var(--nuri-green-bg);
+}
+
+th {
+  text-align: left;
+  padding: 8px 10px;
+  color: var(--nuri-green-dark);
+  font-weight: 600;
+  border-bottom: 1px solid var(--nuri-border);
+}
+
+td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--nuri-border);
+}
+
+/* ===== 버튼 ===== */
+button {
+  border: 1px solid var(--nuri-border);
+  background: #fff;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--nuri-green-bg);
+  border-color: var(--nuri-green);
+}
+
+.btn-primary {
+  background: var(--nuri-green);
+  color: #fff;
+  border: none;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background: var(--nuri-green-dark);
+}
+
+/* ===== 로그인 ===== */
+.login-page {
+  max-width: 360px;
+  margin: 4rem auto;
+  padding: 2rem;
+  border: 1px solid var(--nuri-border);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.login-page h1 {
+  font-size: 20px;
+  color: var(--nuri-green-dark);
+  margin-bottom: 1.5rem;
+}
+
+.login-page input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--nuri-border);
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.login-page button {
+  width: 100%;
+  background: var(--nuri-green);
+  color: #fff;
+  border: none;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.login-page button:hover {
+  background: var(--nuri-green-dark);
+}
+
+.login-logo {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  top: 3px;
+}
+
+.app-logo {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  top: 1px;
+}
+
+.login-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.login-title-row h1 {
+  margin-bottom: 0;
+}
+
+/* ===== 폼 / 필터 ===== */
+.filter-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin-bottom: 1rem;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field-group label {
+  font-size: 12px;
+  color: var(--nuri-green-dark);
+}
+
+.field-group input,
+.field-group select {
+  padding: 8px 10px;
+  border: 1px solid var(--nuri-border);
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.field-button {
+  justify-content: flex-end;
+}
+
+.readonly-field {
+  display: inline-block;
+  padding: 8px 10px;
+  border: 1px solid var(--nuri-border);
+  border-radius: 6px;
+  background: #f7f7f7;
+  color: #555;
+  font-size: 14px;
+  min-width: 50px;
+}
+
+/* ===== 카드 그리드 (식단관리 / 식수신청 공용) ===== */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-top: 1rem;
+}
+
+.menu-cell {
+  border: 1px solid var(--nuri-border);
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-cell h3 {
+  position: relative;
+  margin: -10px -10px 8px;
+  padding: 8px 10px;
+  font-size: 14px;
+  color: var(--nuri-green-dark);
+  text-align: center;
+  background: var(--nuri-green-bg);
+  border-radius: 8px 8px 0 0;
+}
+
+.menu-cell textarea {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 200px;
+  border: none;
+  resize: vertical;
+  font-size: 20px;
+  line-height: 1.6;
+  font-family: inherit;
+}
+
+.menu-status-badge {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-block;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.menu-status-R {
+  background: #f0f0f0;
+  color: #777;
+}
+
+.menu-status-S {
+  background: var(--nuri-green);
+  color: #fff;
+}
+
+.menu-status-E {
+  background: #FFD9D9;
+  color: #B23A3A;
+}
+
+
+/* ===== 식단관리 - 최근 5주 이력 ===== */
+.menu-history-section {
+  margin-top: 2rem;
+}
+
+.menu-history-title {
+  margin-bottom: 0.75rem;
+  color: var(--nuri-green-dark);
+}
+
+.menu-history-week {
+  margin-bottom: 1rem;
+}
+
+.menu-history-week-label {
+  font-weight: 600;
+  color: var(--nuri-green-dark);
+  margin-bottom: 6px;
+  font-size: 13px;
+}
+
+.menu-history-cell h3 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  text-align: center;
+  margin: -10px -10px 8px;
+  padding: 8px 10px;
+  background: #f0f0f0;
+  color: #555;
+  border-radius: 8px 8px 0 0;
+}
+
+.menu-history-copy-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 11px;
+  padding: 2px 8px;
+}
+
+.menu-history-text {
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre-line;
+  min-height: 60px;
+}
+
+/* ===== 식수신청 ===== */
+.order-apply-banner {
+  height: 90px;
+  background-image: url("./assets/order-apply-leaf-bg.png");
+  background-repeat: repeat-x;
+  background-position: top center;
+  background-size: auto 90px;
+}
+
+.order-apply-banner-bottom {
+  transform: scaleY(-1);
+}
+
+.order-apply-hero {
+  text-align: center;
+  margin: 1rem 0 0.5rem;
+}
+
+.order-apply-hero h2 {
+  color: var(--nuri-green-dark);
+  margin: 0;
+}
+
+.order-apply-week-row {
+  text-align: center;
+  margin: 0.5rem 0 1.25rem;
+}
+
+.order-apply-week-row .badge {
+  font-size: 13px;
+  padding: 5px 14px;
+}
+
+.order-menu-preview {
+  font-size: 20px;
+  line-height: 1.6;
+  white-space: pre-line;
+  min-height: 140px;
+  flex: 1;
+}
+
+.order-count-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.order-count-label {
+  font-size: 13px;
+  color: #666;
+}
+
+.order-count-row input {
+  width: 33%;
+  text-align: right;
+  padding: 6px 8px;
+  border: 1px solid var(--nuri-border);
+  border-radius: 6px;
+}
+
+.order-apply-save-row {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.order-apply-footer {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1rem;
+  background: var(--nuri-green-bg);
+  color: var(--nuri-green-dark);
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ===== 식수관리 ===== */
+.order-manage-table th,
+.order-manage-table td {
+  text-align: center;
+}
+
+.order-manage-table thead th:first-child,
+.order-manage-table tbody td:first-child {
+  text-align: center;
+}
+
+.order-table-weekday {
+  font-weight: 600;
+  color: var(--nuri-green-dark);
+  margin-bottom: 6px;
+}
+
+.order-table-menu-card {
+  font-size: 20px;
+  line-height: 1.6;
+  white-space: pre-line;
+  background: var(--nuri-green-bg);
+  border-radius: 6px;
+  padding: 8px;
+}
+
+/* ===== 통계 / 정산 요약 카드 ===== */
+.stat-summary-row {
+  display: flex;
+  gap: 12px;
+  margin: 1rem 0;
+}
+
+.stat-summary-card {
+  flex: 1;
+  border: 1px solid var(--nuri-border);
+  border-radius: 8px;
+  padding: 14px 18px;
+  background: var(--nuri-green-bg);
+}
+
+.stat-summary-label {
+  font-size: 13px;
+  color: var(--nuri-green-dark);
+  margin-bottom: 4px;
+}
+
+.stat-summary-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--nuri-green-dark);
+}
+
+.stat-row-clickable {
+  cursor: pointer;
+}
+
+.stat-row-clickable:hover {
+  background: var(--nuri-green-bg);
+}
+
+/* ===== 배지 ===== */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-gray {
+  background: #f0f0f0;
+  color: #777;
+}
+
+.badge-green {
+  background: var(--nuri-green-bg);
+  color: var(--nuri-green-dark);
+}
+
+.badge-yellow {
+  background: #FFF3CD;
+  color: #856404;
+}
+
+/* ===== 모달 ===== */
+.modal {
+  max-width: 320px;
+  margin: 4rem auto;
+  padding: 1.5rem;
+  border: 1px solid var(--nuri-border);
+  border-radius: 12px;
+  background: #fff;
+  text-align: center;
+}
+
+.modal h2 {
+  font-size: 16px;
+  margin-bottom: 1rem;
+}
+
+.modal input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  padding: 8px 10px;
+  border: 1px solid var(--nuri-border);
+  border-radius: 6px;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 998;
+}
+
+.modal-overlay .modal {
+  margin: 0;
+}
+
+.modal-wide {
+  max-width: 480px;
+  text-align: left;
+}
+
+.modal-wide h2 {
+  text-align: center;
+}
+
+.modal-close-row {
+  margin-top: 1rem;
+  text-align: right;
+}
+
+/* ===== 토스트 ===== */
+.toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--nuri-green-dark);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  z-index: 999;
+}
+
+/* ===== 인쇄 ===== */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
