@@ -11,9 +11,12 @@ const transport = new winston.transports.DailyRotateFile({
 const logger = winston.createLogger({
   level: process.env.NODE_ENV === "production" ? "info" : "debug",
   format: winston.format.combine(
-    winston.format.timestamp(),
+    winston.format.timestamp({
+      format: () =>
+        new Date().toLocaleString("sv-SE", { timeZone: "Asia/Seoul", hour12: false }),
+    }),
     winston.format.printf(
-      ({ timestamp, level, message }) => `[${timestamp}] ${level.toUpperCase()}: ${message}`
+      ({ timestamp, level, message }) => `[${timestamp} KST] ${level.toUpperCase()}: ${message}`
     )
   ),
   transports: [transport, new winston.transports.Console()],
